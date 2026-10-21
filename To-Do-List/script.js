@@ -1,6 +1,3 @@
-
-
- // Get HTML elements
 const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
@@ -12,25 +9,21 @@ const filterButtons = document.querySelectorAll(
     'input[name="taskFilter"]'
 );
 
-// Store tasks
 let tasks = [];
 let nextTaskId = 1;
 let currentFilter = "all";
 
-// Add a new task
 taskForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const taskText = taskInput.value.trim();
 
-    // Validate input
     if (taskText === "") {
         errorMessage.textContent = "Please enter a task.";
         taskInput.focus();
         return;
     }
 
-    // Create a task object
     const task = {
         id: nextTaskId,
         text: taskText,
@@ -40,16 +33,13 @@ taskForm.addEventListener("submit", function (event) {
     tasks.push(task);
     nextTaskId++;
 
-    // Clear the input and error message
     taskInput.value = "";
     errorMessage.textContent = "";
 
-    // Update the task list
     renderTasks();
     taskInput.focus();
 });
 
-// Display tasks according to the selected filter
 function renderTasks() {
     taskList.replaceChildren();
 
@@ -122,7 +112,6 @@ function renderTasks() {
         taskList.appendChild(listItem);
     });
 
-    // Update the incomplete-task counter
     const remainingTasks = tasks.filter(function (task) {
         return !task.completed;
     }).length;
@@ -130,8 +119,8 @@ function renderTasks() {
     taskCounter.textContent =
         remainingTasks +
         (remainingTasks === 1
-            ? " remaining task"
-            : " remaining tasks");
+            ? " remaining "
+            : " remaining ");
 }
 
 
