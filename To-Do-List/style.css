@@ -1,0 +1,173 @@
+
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e4e6e8;
+    color: #212529;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Navigation bar */
+.navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* Main section */
+#home {
+    margin:15% 15% 15%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow:#212529 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Heading */
+#home h1 {
+    color: #17365d;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+#home .lead {
+    color: #6c757d;
+}
+
+/* Input form */
+.task-form {
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-control {
+    min-height: 46px;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* Buttons */
+.btn {
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.btn-primary {
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+}
+
+/* Validation message */
+#errorMessage {
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-height: 1.2em;
+}
+
+/* Task counter */
+.remaining-tasks {
+    color: #495057;
+}
+
+#taskCounter {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+/* Filter buttons */
+.btn-group {
+    max-width: 100%;
+}
+
+.btn-outline-primary {
+    font-weight: 500;
+}
+
+/* Task list */
+.task-list {
+    width: 100%;
+    max-width: 600px;
+    padding-left: 0;
+}
+
+/* Individual task items */
+.task-list .list-group-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    overflow-wrap: anywhere;
+}
+
+/* Task text */
+.task-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Completed task appearance */
+.task-text.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+/* Task checkbox */
+.task-list input[type="checkbox"] {
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* Delete button */
+.task-list .btn-danger {
+    flex-shrink: 0;
+}
+
+/* Clear completed button */
+#clearCompleted {
+    font-weight: 500;
+}
+
+/* Mobile responsive styling */
+@media (max-width: 576px) {
+    #home {
+        padding: 35px 12px;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    #home .lead {
+        font-size: 1rem;
+    }
+
+    .task-form,
+    .task-list {
+        max-width: 100%;
+    }
+
+    .input-group .btn {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .task-list .list-group-item {
+        padding: 12px 10px;
+        gap: 8px;
+    }
+
+    .task-list .btn {
+        font-size: 0.85rem;
+        padding: 5px 8px;
+    }
+}
