@@ -1,0 +1,323 @@
+/* ==========================================================
+   Studio Journal - styles.css
+   Shared styles for index.html and projects.html
+   ========================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --text: #23302b;
+    --muted: #5f6d66;
+    --accent: #2f6f5e;
+    --accent-hover: #245a4c;
+    --border: #e2ded3;
+    --radius: 14px;
+    --shadow: 0 6px 20px rgba(35, 48, 43, 0.08);
+    --max-width: 1100px;
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--accent);
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+    margin: 0 0 0.6rem;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+/* ---------- Header and navigation ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem 5%;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: 0.3px;
+}
+
+nav {
+    display: flex;
+    gap: 0.4rem;
+}
+
+nav a {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--muted);
+    transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: var(--bg);
+    color: var(--text);
+}
+
+nav a.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ---------- Layout ---------- */
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2.5rem 5% 3rem;
+}
+
+section {
+    margin-bottom: 3.5rem;
+}
+
+/* ---------- Buttons ---------- */
+.button {
+    display: inline-block;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.button:hover,
+.button:focus-visible {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* ---------- Home: intro ---------- */
+.intro {
+    text-align: center;
+}
+
+.banner {
+    width: 100%;
+    height: clamp(220px, 40vw, 420px);
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.intro h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--accent);
+}
+
+.intro p {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro .button {
+    margin-top: 0.5rem;
+}
+
+/* ---------- Home: features ---------- */
+#features {
+    scroll-margin-top: 90px;
+}
+
+#features h2 {
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 1.8rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.feature {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.feature .icon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.feature h3 {
+    font-size: 1.15rem;
+}
+
+.feature p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* ---------- Projects page ---------- */
+.section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 2rem;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+.projects article {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.projects article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(35, 48, 43, 0.14);
+}
+
+.projects img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.projects h2,
+.projects h3 {
+    margin: 1.1rem 1.25rem 0.4rem;
+    font-size: 1.25rem;
+}
+
+.projects p {
+    margin: 0 1.25rem 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.projects .button {
+    align-self: flex-start;
+    margin: 0 1.25rem 1.4rem;
+    padding: 0.5rem 1.3rem;
+    font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    padding: 1.5rem 5%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- Accessibility ---------- */
+a:focus-visible,
+.button:focus-visible {
+    outline: 3px solid #f2b84b;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    main {
+        padding-top: 1.75rem;
+    }
+
+    .features,
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        padding: 1.2rem;
+    }
+}
