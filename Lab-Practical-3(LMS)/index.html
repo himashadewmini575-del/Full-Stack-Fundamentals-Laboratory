@@ -3,141 +3,227 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>LMS | Learning Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- ================= INTERNAL CSS ================= -->
+    <style>
+      body {
+        background-color: #ffffff;
+      }
+
+      /* Navbar: keeps the original Bootstrap blue, with small touches */
+      nav .nav-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Hero: original light section with a coloured bottom edge */
+      #home {
+        border-bottom: 5px solid #0d6efd;
+      }
+      #greeting {
+        color: #0d6efd;
+        font-weight: 700;
+      }
+      #now {
+        color: #6c757d;
+      }
+
+      /* Section titles */
+      .section-title {
+        font-weight: 700;
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 70px;
+        height: 4px;
+        margin: 0.5rem auto 0;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #0d6efd, #6f42c1, #d63384);
+      }
+
+      /* Cards: same look as original Bootstrap cards, plus a hover lift */
+      .card {
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Course card header (the coloured box where the image would go) */
+      .course-header {
+        height: 10rem;
+        align-content: center;
+        font-size: large;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      /* Footer */
+      footer a {
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
 
   <body>
 
     <nav class="navbar bg-primary" aria-label="Main navigation">
-    <div class="container">
-      <a class="navbar-brand text-white" href="index.html">LMS</a>
-      <div class="nav">
-        <a class="nav-link text-white" href="#home">Home</a>
-        <a class="nav-link text-white" href="#courses">Courses</a>
-        <a class="nav-link text-white" href="#about">About</a>
-        <a class="nav-link text-white" href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <main>
-    <section id="home" class="bg-light text-center py-5">
       <div class="container">
-            <h2><span id="greeting"></span></h2>
-            <p><span id="now"></span></p>
-
-        <h1 class="display-4">Welcome to the Learning Management System</h1>
-        <p class="lead">Your gateway to knowledge and success. Explore a wide variety of courses and resources.</p>
-        <a href="#courses" class="btn btn-primary">Get Started</a>
-      </div>
-    </section>
-
-
-    <section id="about" class="container text-center py-5">
-      <div class="container">
-        <h2 class="mb-4">Features</h2>
-        <div class="row">
-
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Extensive Course Library</h5>
-                <p class="card-text">Access courses in a variety of fields and skill levels</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Interactive Discussions</h5>
-                <p class="card-text">Engage in Live Discussions and group projects.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Certification</h5>
-                <p class="card-text">Earn Certificates to showcase your achievements</p>
-              </div>
-            </div>
-          </div>
-          
+        <a class="navbar-brand text-white" href="index.html">LMS</a>
+        <div class="nav">
+          <a class="nav-link text-white" href="#home">Home</a>
+          <a class="nav-link text-white" href="#courses">Courses</a>
+          <a class="nav-link text-white" href="#about">About</a>
+          <a class="nav-link text-white" href="#contact">Contact</a>
         </div>
       </div>
-    </section>
+    </nav>
 
-    <section id="about" class="container text-center py-5">
-      <div class="container">
-        <h2 class="mb-4">Popular Courses</h2>
-        <div class="row">
+    <main>
+      <section id="home" class="bg-light text-center py-5">
+        <div class="container">
+          <h2><span id="greeting"></span></h2>
+          <p><span id="now"></span></p>
 
+          <h1 class="display-4">Welcome to the Learning Management System</h1>
+          <p class="lead">Your gateway to knowledge and success. Explore a wide variety of courses and resources.</p>
+          <a href="#courses" class="btn btn-primary">Get Started</a>
+        </div>
+      </section>
+
+      <section id="about" class="container text-center py-5">
+        <div class="container">
+          <h2 class="section-title mb-5">Features</h2>
+          <div class="row">
+
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 border-primary">
+                <div class="card-body">
+                  <h5 class="card-title text-primary">Extensive Course Library</h5>
+                  <p class="card-text">Access courses in a variety of fields and skill levels</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 border-success">
+                <div class="card-body">
+                  <h5 class="card-title text-success">Interactive Discussions</h5>
+                  <p class="card-text">Engage in Live Discussions and group projects.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 border-danger">
+                <div class="card-body">
+                  <h5 class="card-title text-danger">Certification</h5>
+                  <p class="card-text">Earn Certificates to showcase your achievements</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="courses" class="bg-light container-fluid text-center py-5">
+        <div class="container">
+          <h2 class="section-title mb-5">Popular Courses</h2>
           <div class="row g-3">
 
             <!-- Card 1 -->
             <div class="col-md-4 mb-3">
               <div class="card h-100">
-                <div class="card-header text-center"  style="height: 10rem; align-content: center; background-color: rgb(121, 125, 125); font-size: large;">Web Development
+                <div class="card-header course-header text-center" style="background-color: #0d6efd;">
+                  Web Development
                 </div>
-                  <div class="card-body">
-                     <h4 class="card-title">Web Development</h4>
-                         <p class="card-text">  Learn to build modern, responsive websites using HTML, CSS, and JavaScript.  </p>
-                          <a href="#courses" class="btn btn-primary">Learn More</a>
-                  </div>
-               </div>
+                <div class="card-body">
+                  <h4 class="card-title">Web Development</h4>
+                  <p class="card-text">Learn to build modern, responsive websites using HTML, CSS, and JavaScript.</p>
+                  <a href="#courses" class="btn btn-primary">Learn More</a>
+                </div>
+              </div>
             </div>
 
             <!-- Card 2 -->
             <div class="col-md-4 mb-3">
               <div class="card h-100">
-                 <div class="card-header text-center" style="height: 10rem; align-content: center; background-color: rgb(121, 125, 125); font-size: large;">Data Science
-                 </div>
-                  <div class="card-body">
-                    <h4 class="card-title">Data Science</h4>
-                       <p class="card-text"> Learn to analyze and visualize data using Python and R.</p>
-                          <a href="#courses" class="btn btn-primary">Learn More</a>
-                  </div>
+                <div class="card-header course-header text-center" style="background-color: #198754;">
+                  Data Science
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Data Science</h4>
+                  <p class="card-text">Learn to analyze and visualize data using Python and R.</p>
+                  <a href="#courses" class="btn btn-success">Learn More</a>
+                </div>
               </div>
             </div>
 
-             <!-- Card 3 -->
+            <!-- Card 3 -->
             <div class="col-md-4 mb-3">
-             <div class="card h-100">
-               <div class="card-header text-center"
-           style="height: 10rem; align-content: center; background-color: rgb(121, 125, 125); font-size: large;">
-        Programming
-      </div>
-      <div class="card-body">
-        <h4 class="card-title">Programming</h4>
-        <p class="card-text">
-          Develop programming skills and learn to solve problems using code.
-        </p>
-        <a href="#courses" class="btn btn-primary">Learn More</a>
-      </div>
-    </div>
-  </div>
+              <div class="card h-100">
+                <div class="card-header course-header text-center" style="background-color: #dc3545;">
+                  Programming
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Programming</h4>
+                  <p class="card-text">Develop programming skills and learn to solve problems using code.</p>
+                  <a href="#courses" class="btn btn-danger">Learn More</a>
+                </div>
+              </div>
+            </div>
 
-</div>
-
+          </div>
         </div>
+      </section>
+
+    </main>
+
+    <footer class="bg-primary text-white pt-4 mt-4">
+      <div class="container">
+        <p class="text-center pb-3 mb-0">&copy; <span id="year"></span> LMS | Learning Management System</p>
       </div>
-    </section>
+    </footer>
 
-    <form>
-      <label for="class1">Class 1:</label>
-      <input type="text" id="class1" >
-    </form>
-
-
-          
-  </main>
-  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- Greeting function (internal JavaScript) -->
+    <script>
+      function updateGreeting() {
+        const now = new Date();
+        const hour = now.getHours();
+
+        let greeting = "Good evening";
+        if (hour < 12) {
+          greeting = "Good morning";
+        } else if (hour < 17) {
+          greeting = "Good afternoon";
+        }
+
+        document.getElementById("greeting").textContent = greeting + "!";
+        document.getElementById("now").textContent = now.toLocaleString([], {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      }
+
+      updateGreeting();
+      setInterval(updateGreeting, 30000); // refresh every 30 seconds
+    </script>
+
+    <!-- External JavaScript file (footer year + Add Class form) -->
     <script src="script.js"></script>
 
- 
   </body>
 </html>
