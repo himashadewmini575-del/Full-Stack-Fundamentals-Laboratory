@@ -1,36 +1,44 @@
+
+/* General page styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #e4e6e8;
 }
 
+/* Navigation bar */
 .navbar-brand {
     font-size: 1.4rem;
     font-weight: bold;
 }
 
+/* Main task manager container */
 #home {
-    margin:5% 20% 20%;
+    margin: 5% 20% 20%;
     background-color: #ffffff;
     border-radius: 15px;
-   box-shadow:0 0 0 3px rgba(32, 18, 18, 0.05);
-   padding: 10%;
+    box-shadow: 0 0 0 3px rgba(32, 18, 18, 0.05);
+    padding: 10%;
 }
 
+/* Main heading */
 #home h1 {
     color: #17365d;
     font-weight: 700;
     margin-bottom: 12px;
 }
 
+/* Subtitle */
 #home .lead {
     color: #6c757d;
 }
 
+/* Task input form */
 .task-form {
     width: 100%;
     max-width: 600px;
 }
 
+/* Input field */
 .form-control {
     min-height: 46px;
     border: 1px solid #ced4da;
@@ -41,11 +49,13 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
 }
 
+/* Button transitions */
 .btn {
     transition: background-color 0.2s ease,
                 transform 0.2s ease;
 }
 
+/* Add Task button */
 .btn-primary {
     font-weight: 600;
 }
@@ -54,21 +64,24 @@ body {
     transform: translateY(-1px);
 }
 
+/* Validation error message */
 #errorMessage {
     font-size: 0.9rem;
     font-weight: 500;
     min-height: 1.2em;
 }
 
+/* Remaining task counter */
 .remaining-tasks {
     color: #495057;
 }
 
 #taskCounter {
-    color: #f1f5f9;
-    font-weight: 100;
+    color: #ffffff;
+    font-weight: 600;
 }
 
+/* Filter buttons */
 .btn-group {
     width: 100%;
 }
@@ -77,6 +90,7 @@ body {
     font-weight: 500;
 }
 
+/* Task list */
 .task-list {
     width: 100%;
     max-width: 600px;
@@ -91,31 +105,69 @@ body {
     overflow-wrap: anywhere;
 }
 
+/* Individual task text */
 .task-text {
     flex: 1;
     min-width: 0;
 }
 
+/* Completed task appearance */
 .task-text.completed {
     text-decoration: line-through;
     color: #6c757d;
 }
 
+/* Task checkbox */
 .task-list input[type="checkbox"] {
     flex-shrink: 0;
     cursor: pointer;
 }
 
+/* Delete button */
 .task-list .btn-danger {
     flex-shrink: 0;
 }
 
+/* Clear completed button */
 #clearCompleted {
     font-weight: 500;
 }
 
+/* Empty task list message */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 35px 20px;
+    background-color: #f8faff;
+    border: 1px dashed #b6c9e8;
+    border-radius: 12px;
+    color: #495057;
+}
+
+.empty-state-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.empty-state-title {
+    color: #17365d;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.empty-state-message {
+    color: #6c757d;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* Responsive design for mobile screens */
 @media (max-width: 576px) {
     #home {
+        margin: 5% 3%;
         padding: 35px 12px;
     }
 
@@ -145,5 +197,9 @@ body {
     .task-list .btn {
         font-size: 0.85rem;
         padding: 5px 8px;
+    }
+
+    .empty-state {
+        padding: 28px 12px;
     }
 }

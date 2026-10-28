@@ -1,3 +1,5 @@
+
+/* Select HTML elements */
 const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
@@ -9,17 +11,56 @@ const filterButtons = document.querySelectorAll(
     'input[name="taskFilter"]'
 );
 
-let tasks = [];
-let nextTaskId = 1;
+/* Local Storage key */
+const STORAGE_KEY = "todoTasks";
+
+/* Application state */
+let tasks = loadTasks();
+let nextTaskId = getNextTaskId();
 let currentFilter = "all";
 
+/* Load saved tasks from Local Storage */
+function loadTasks() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        return Array.isArray(saved) ? saved : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+/* Save tasks to Local Storage */
+function saveTasks() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    } catch (error) {
+        // The application can continue without Local Storage.
+    }
+}
+
+/* Generate the next task ID */
+function getNextTaskId() {
+    const ids = tasks.map(function (task) {
+        return task.id;
+    });
+
+    return ids.length > 0
+        ? Math.max.apply(null, ids) + 1
+        : 1;
+}
+
+/* Add a new task */
 taskForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const taskText = taskInput.value.trim();
 
+    // Prevent empty tasks and spaces-only input
     if (taskText === "") {
-        errorMessage.textContent = "Please enter a task.";
+        errorMessage.textContent =
+            "Please enter a task. Empty tasks or tasks with only spaces are not allowed.";
+
+        taskInput.classList.add("is-invalid");
         taskInput.focus();
         return;
     }
@@ -33,13 +74,24 @@ taskForm.addEventListener("submit", function (event) {
     tasks.push(task);
     nextTaskId++;
 
+    // Reset input and error message
     taskInput.value = "";
     errorMessage.textContent = "";
+    taskInput.classList.remove("is-invalid");
 
+    saveTasks();
     renderTasks();
+
     taskInput.focus();
 });
 
+/* Clear the validation message while typing */
+taskInput.addEventListener("input", function () {
+    errorMessage.textContent = "";
+    taskInput.classList.remove("is-invalid");
+});
+
+/* Display tasks according to the selected filter */
 function renderTasks() {
     taskList.replaceChildren();
 
@@ -56,9 +108,47 @@ function renderTasks() {
         return true;
     });
 
+    // Show a styled message when there are no tasks to display
+    if (filteredTasks.length === 0) {
+        let icon = "📝";
+        let title = "No tasks yet!";
+        let message = "Add your first task to get started.";
+
+        if (tasks.length > 0) {
+            if (currentFilter === "active") {
+                icon = "🎉";
+                title = "All caught up!";
+                message = "You have completed all your tasks.";
+            } else if (currentFilter === "completed") {
+                icon = "✅";
+                title = "No completed tasks";
+                message = "Completed tasks will appear here.";
+            }
+        }
+
+        const emptyItem = document.createElement("li");
+        emptyItem.className = "empty-state list-group-item";
+
+        const emptyIcon = document.createElement("div");
+        emptyIcon.className = "empty-state-icon";
+        emptyIcon.textContent = icon;
+
+        const emptyTitle = document.createElement("h5");
+        emptyTitle.className = "empty-state-title";
+        emptyTitle.textContent = title;
+
+        const emptyMessage = document.createElement("p");
+        emptyMessage.className = "empty-state-message";
+        emptyMessage.textContent = message;
+
+        emptyItem.append(emptyIcon, emptyTitle, emptyMessage);
+        taskList.appendChild(emptyItem);
+    }
+
     // Create an HTML element for each task
     filteredTasks.forEach(function (task) {
         const listItem = document.createElement("li");
+
         listItem.className =
             "list-group-item d-flex align-items-center gap-3";
 
@@ -76,6 +166,8 @@ function renderTasks() {
         // Complete or reactivate the task
         checkbox.addEventListener("change", function () {
             task.completed = checkbox.checked;
+
+            saveTasks();
             renderTasks();
         });
 
@@ -99,11 +191,13 @@ function renderTasks() {
             "Delete task: " + task.text
         );
 
+        // Delete only the selected task
         deleteButton.addEventListener("click", function () {
             tasks = tasks.filter(function (item) {
                 return item.id !== task.id;
             });
 
+            saveTasks();
             renderTasks();
         });
 
@@ -112,19 +206,17 @@ function renderTasks() {
         taskList.appendChild(listItem);
     });
 
+    // Update the number of incomplete tasks
     const remainingTasks = tasks.filter(function (task) {
         return !task.completed;
     }).length;
 
     taskCounter.textContent =
         remainingTasks +
-        (remainingTasks === 1
-            ? " remaining "
-            : " remaining ");
+        (remainingTasks === 1 ? " remaining" : " remaining");
 }
 
-
-// Handle filter selection
+/* Handle filter selection */
 filterButtons.forEach(function (button) {
     button.addEventListener("change", function () {
         if (button.checked) {
@@ -134,14 +226,16 @@ filterButtons.forEach(function (button) {
     });
 });
 
-// Clear all completed tasks
+/* Remove all completed tasks */
 clearCompletedBtn.addEventListener("click", function () {
     tasks = tasks.filter(function (task) {
         return !task.completed;
     });
 
+    saveTasks();
     renderTasks();
 });
 
-// Display the initial task list and counter
+/* Display the initial task list and counter */
 renderTasks();
+
